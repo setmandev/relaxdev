@@ -103,13 +103,13 @@ kbd{background:var(--c-brd2);border-radius:3px;padding:1px 5px;font:inherit;font
 
 .scroll-progress{position:sticky;top:0;left:0;height:2px;background:var(--c-ac);z-index:100;width:0;transition:width .1s linear;box-shadow:0 0 6px var(--c-ac)}
 
-.pn{display:none;padding:var(--s7);min-height:100%}.pn.on{display:block}
+.pn{display:none;padding:var(--s7);min-height:100%;overflow-x:hidden}.pn.on{display:block}
 .pn.fresh{animation:pi .4s var(--ease)}
 @keyframes pi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 .cb{display:flex}
 .ln{color:var(--c-t4);font-size:13px;line-height:1.85;text-align:right;padding-right:var(--s4);margin-right:var(--s4);user-select:none;min-width:32px;border-right:1px solid var(--c-brd);transition:color .5s}
-.cc{font-size:13px;line-height:1.85;flex:1;overflow-x:auto}
+.cc{font-size:13px;line-height:1.85;flex:1;overflow-x:hidden}
 .cc>div{padding:0 var(--s1);border-radius:3px;transition:background .12s;margin:0 calc(-1*var(--s1))}.cc>div:hover{background:var(--c-sf2)}
 .kw{color:var(--c-prp);font-weight:500}.fn{color:#dcdcaa}.str{color:#ce9178}.num{color:#b5cea8}
 .cm{color:var(--c-t3);font-style:italic}.prop{color:#9cdcfe}.type{color:#4ec9b0}.punct{color:var(--c-t4)}
@@ -156,7 +156,7 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
 .cap-desc{font-size:11px;line-height:1.6;color:var(--c-t2);margin-bottom:var(--s3)}
 .cap-tags{display:flex;flex-wrap:wrap;gap:var(--s1)}
 .cap-tag{padding:2px 7px;border-radius:3px;font-size:10px;background:var(--c-ag);color:var(--c-cyn);border:1px solid rgba(34,211,238,.1)}
-.cap-code{margin-top:var(--s3);padding:var(--s3);background:var(--c-card);border-radius:var(--r-s);font-size:10px;line-height:1.5;color:var(--c-t3);overflow:hidden;max-height:0;transition:max-height .4s var(--ease);border:1px solid transparent}
+.cap-code{margin-top:var(--s3);padding:var(--s3);background:var(--c-card);border-radius:var(--r-s);font-size:10px;line-height:1.5;color:var(--c-t3);overflow:hidden;overflow-x:hidden;word-break:break-word;max-height:0;transition:max-height .4s var(--ease);border:1px solid transparent}
 .cap-card:hover .cap-code{max-height:200px;border-color:var(--c-brd)}
 .cap-toggle{font-size:10px;color:var(--c-t3);margin-top:var(--s2);display:flex;align-items:center;gap:4px;transition:color .2s}.cap-card:hover .cap-toggle{color:var(--c-ac)}
 
@@ -392,14 +392,35 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
         <div class="sk"><span class="sk-n">Python</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#306998,#ffd43b);--sd:.6s"></div></div><span class="sk-p">88%</span></div>
         <div class="sk"><span class="sk-n">React / Next.js</span><div class="sk-bg"><div class="sk-f" data-w="93" style="background:linear-gradient(90deg,#61dafb,#0070f3);--sd:.9s"></div></div><span class="sk-p">93%</span></div>
         <div class="sk"><span class="sk-n">Node.js</span><div class="sk-bg"><div class="sk-f" data-w="90" style="background:linear-gradient(90deg,#339933,#66cc33);--sd:1.2s"></div></div><span class="sk-p">90%</span></div>
+        <div class="sk"><span class="sk-n">Swift</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#f05138,#ff6f43);--sd:1.35s"></div></div><span class="sk-p">82%</span></div>
         <div class="skt" style="margin-top:var(--s5)">▸ Infrastructure</div>
         <div class="sk"><span class="sk-n">PostgreSQL</span><div class="sk-bg"><div class="sk-f" data-w="85" style="background:linear-gradient(90deg,#336791,#5294c4);--sd:1.5s"></div></div><span class="sk-p">85%</span></div>
+        <div class="sk"><span class="sk-n">Supabase</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#3ecf8e,#2ab573);--sd:1.65s"></div></div><span class="sk-p">88%</span></div>
+        <div class="sk"><span class="sk-n">MongoDB</span><div class="sk-bg"><div class="sk-f" data-w="80" style="background:linear-gradient(90deg,#47a248,#6cac48);--sd:1.8s"></div></div><span class="sk-p">80%</span></div>
         <div class="sk"><span class="sk-n">Docker / K8s</span><div class="sk-bg"><div class="sk-f" data-w="80" style="background:linear-gradient(90deg,#2496ed,#326ce5);--sd:1.8s"></div></div><span class="sk-p">80%</span></div>
         <div class="sk"><span class="sk-n">AWS / GCP</span><div class="sk-bg"><div class="sk-f" data-w="75" style="background:linear-gradient(90deg,#ff9900,#4285f4);--sd:2.1s"></div></div><span class="sk-p">75%</span></div>
         <div class="sk"><span class="sk-n">CI / CD</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#fc6d26,#e24329);--sd:2.4s"></div></div><span class="sk-p">82%</span></div>
+        <div class="sk"><span class="sk-n">Redis</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#dc382d,#f05b4f);--sd:2.5s"></div></div><span class="sk-p">82%</span></div>
+        <div class="sk"><span class="sk-n">Kafka</span><div class="sk-bg"><div class="sk-f" data-w="65" style="background:linear-gradient(90deg,#231f20,#555);--sd:2.55s"></div></div><span class="sk-p">65%</span></div>
+        <div class="sk"><span class="sk-n">Nginx</span><div class="sk-bg"><div class="sk-f" data-w="85" style="background:linear-gradient(90deg,#009639,#4fbf67);--sd:2.6s"></div></div><span class="sk-p">85%</span></div>
+        <div class="sk"><span class="sk-n">Git</span><div class="sk-bg"><div class="sk-f" data-w="92" style="background:linear-gradient(90deg,#f05032,#f4724e);--sd:2.65s"></div></div><span class="sk-p">92%</span></div>
+        <div class="skt" style="margin-top:var(--s5)">▸ AI & LLM</div>
+        <div class="sk"><span class="sk-n">OpenAI API</span><div class="sk-bg"><div class="sk-f" data-w="90" style="background:linear-gradient(90deg,#10a37f,#1ae8b5);--sd:2.7s"></div></div><span class="sk-p">90%</span></div>
+        <div class="sk"><span class="sk-n">Claude API</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#d4a27f,#c8956c);--sd:2.8s"></div></div><span class="sk-p">88%</span></div>
+        <div class="sk"><span class="sk-n">Gemini API</span><div class="sk-bg"><div class="sk-f" data-w="85" style="background:linear-gradient(90deg,#4285f4,#34a853);--sd:2.9s"></div></div><span class="sk-p">85%</span></div>
+        <div class="sk"><span class="sk-n">OpenRouter</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#8b5cf6,#a78bfa);--sd:3s"></div></div><span class="sk-p">82%</span></div>
+        <div class="skt" style="margin-top:var(--s5)">▸ Mobile</div>
+        <div class="sk"><span class="sk-n">React Native</span><div class="sk-bg"><div class="sk-f" data-w="80" style="background:linear-gradient(90deg,#61dafb,#2196f3);--sd:3.1s"></div></div><span class="sk-p">80%</span></div>
+        <div class="sk"><span class="sk-n">Flutter</span><div class="sk-bg"><div class="sk-f" data-w="60" style="background:linear-gradient(90deg,#02569b,#42a5f5);--sd:3.2s"></div></div><span class="sk-p">60%</span></div>
+        <div class="skt" style="margin-top:var(--s5)">▸ Bots & Integrations</div>
+        <div class="sk"><span class="sk-n">Telegram API</span><div class="sk-bg"><div class="sk-f" data-w="95" style="background:linear-gradient(90deg,#0088cc,#34a8e0);--sd:2.7s"></div></div><span class="sk-p">95%</span></div>
+        <div class="sk"><span class="sk-n">Telegram WebApp</span><div class="sk-bg"><div class="sk-f" data-w="90" style="background:linear-gradient(90deg,#0088cc,#5bc8ef);--sd:3s"></div></div><span class="sk-p">90%</span></div>
+        <div class="sk"><span class="sk-n">Discord API</span><div class="sk-bg"><div class="sk-f" data-w="78" style="background:linear-gradient(90deg,#5865f2,#7983f5);--sd:3.3s"></div></div><span class="sk-p">78%</span></div>
+        <div class="sk"><span class="sk-n">Payments API</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#6772e5,#9b59b6);--sd:3.6s"></div></div><span class="sk-p">88%</span></div>
+        <div class="sk"><span class="sk-n">VK/MAX API</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#0077ff,#4a90d9);--sd:3.9s"></div></div><span class="sk-p">82%</span></div>
         <div class="skt" style="margin-top:var(--s5)">▸ Learning</div>
         <div class="sk"><span class="sk-n">Rust</span><div class="sk-bg"><div class="sk-f" data-w="45" style="background:linear-gradient(90deg,#ce422b,#f74c00);--sd:2.7s"></div></div><span class="sk-p">45%</span></div>
-        <div class="sk"><span class="sk-n">Go</span><div class="sk-bg"><div class="sk-f" data-w="35" style="background:linear-gradient(90deg,#00add8,#5dc9e2);--sd:3s"></div></div><span class="sk-p">35%</span></div>
+        <div class="sk"><span class="sk-n">Go</span><div class="sk-bg"><div class="sk-f" data-w="70" style="background:linear-gradient(90deg,#00add8,#5dc9e2);--sd:3s"></div></div><span class="sk-p">70%</span></div>
         <div class="sk"><span class="sk-n">Дедлайны</span><div class="sk-bg"><div class="sk-f" data-w="100" style="background:linear-gradient(90deg,#ef4444,#dc2626);--sd:3.3s"></div></div><span class="sk-p">💀</span></div>
       </div>
 
