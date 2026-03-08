@@ -86,7 +86,7 @@ kbd{background:var(--c-brd2);border-radius:3px;padding:1px 5px;font:inherit;font
 .ft .ind{padding-left:38px}.ft .dim{pointer-events:none;opacity:.4;font-size:10px}
 
 .mn{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden}
-.tabs{background:var(--c-sf);display:flex;border-bottom:1px solid var(--c-brd);overflow-x:auto;flex-shrink:0;transition:background .6s var(--ease)}
+.tabs{background:var(--c-sf);display:flex;border-bottom:1px solid var(--c-brd);overflow-x:auto;overflow-y:hidden;flex-shrink:0;transition:background .6s var(--ease);overscroll-behavior:none;touch-action:pan-x}
 .tabs::-webkit-scrollbar{height:0}
 .tb{padding:var(--s2) var(--s4);font-size:12px;color:var(--c-t3);cursor:pointer;border-right:1px solid var(--c-brd);white-space:nowrap;display:flex;align-items:center;gap:6px;transition:all .2s;user-select:none;position:relative}
 .tb:hover{color:var(--c-t1);background:var(--c-sf2)}
@@ -226,13 +226,13 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
   .tbar{padding:8px var(--s3)}
   .dots{gap:6px}
   .dt{width:10px;height:10px}
-  .tabs{overflow-x:auto;gap:0}
+  .tabs{overflow-x:auto;gap:0;position:sticky;top:0;z-index:50}
   .tb{padding:var(--s2) var(--s3);font-size:11px;gap:4px;min-width:0;flex-shrink:0}
   .tb .x{display:none}
   .td{width:5px;height:5px}
   .ide{flex-direction:column;min-height:0;max-height:none;flex:1}
   .mn{flex:1;min-height:0}
-  .co{flex:1}
+  .co{flex:1;padding-bottom:64px}
   .pn{padding:var(--s4)}
   .ascii{font-size:4.5px;letter-spacing:0;margin-bottom:var(--s3)}
   .cb{gap:0}
@@ -297,7 +297,7 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
 <div class="boot" id="B"><div class="boot-log" id="BL"></div><div class="bootbar"><div class="bootfill"></div></div></div>
 <div class="bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 <canvas id="mx"></canvas><canvas id="net"></canvas><div class="nz"></div>
-<div class="cmdbg" id="CMD"><div class="cmdbox"><div class="cmdtp"><span style="color:var(--c-t3)">🔍</span><input id="cmi" placeholder="Поиск..." autocomplete="off" spellcheck="false"></div><div class="cmdls" id="CL"></div></div></div>
+<div class="cmdbg" id="CMD"><div class="cmdbox"><div class="cmdtp"><span style="color:var(--c-t3)">🔍</span><input id="cmi" placeholder="Найти..." autocomplete="off" spellcheck="false"></div><div class="cmdls" id="CL"></div></div></div>
 <div class="tsts" id="TT"></div>
 
 <div class="scene">
@@ -305,7 +305,7 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
 
 <div class="tbar">
   <div class="dots"><div class="dt dt-r" id="dtr"></div><div class="dt dt-y" id="dty"></div><div class="dt dt-g"></div></div>
-  <div class="tbar-c"><div class="st" id="stb">🔍 Поиск... <kbd>Ctrl</kbd><kbd>K</kbd></div></div>
+  <div class="tbar-c"><div class="st" id="stb">🔍 Найти... <kbd>Ctrl</kbd><kbd>K</kbd></div></div>
 </div>
 
 <div class="ide">
@@ -331,27 +331,27 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
   </div>
 
   <div class="exp" id="EX"><div class="exp-in">
-    <div class="exp-t">EXPLORER <span id="exc">×</span></div>
+    <div class="exp-t">НАВИГАЦИЯ <span id="exc">×</span></div>
     <ul class="ft">
-      <li data-f="about" class="on">📂 src/</li>
-      <li data-f="about" class="ind on">{ } about.json</li>
-      <li data-f="skills" class="ind">TS skills.ts</li>
-      <li data-f="build" class="ind">🛠️ build.md</li>
-      <li data-f="contact" class="ind">#! contact.sh</li>
-      <li data-f="terminal">⬤ terminal</li>
+      <li data-f="about" class="on">📂 разделы/</li>
+      <li data-f="about" class="ind on">👤 Обо мне</li>
+      <li data-f="skills" class="ind">⚡ Навыки</li>
+      <li data-f="build" class="ind">🛠️ Проекты</li>
+      <li data-f="contact" class="ind">📡 Контакты</li>
+      <li data-f="terminal">▶️ Терминал</li>
       <li class="dim">📂 node_modules/ (846MB)</li>
     </ul>
   </div></div>
 
   <div class="mn">
     <div class="tabs" id="TABS">
-      <div class="tb on" data-p="about"><span class="td" style="background:#f0db4f"></span>about.json<span class="x">×</span></div>
-      <div class="tb" data-p="skills"><span class="td" style="background:#3178c6"></span>skills.ts<span class="x">×</span></div>
-      <div class="tb" data-p="build"><span class="td" style="background:#e44d26"></span>build.md<span class="x">×</span></div>
-      <div class="tb" data-p="terminal"><span class="td" style="background:#28c840"></span>terminal<span class="x">×</span></div>
-      <div class="tb" data-p="contact"><span class="td" style="background:#007acc"></span>contact.sh<span class="x">×</span></div>
+      <div class="tb on" data-p="about"><span class="td" style="background:#f0db4f"></span>Обо мне<span class="x">×</span></div>
+      <div class="tb" data-p="skills"><span class="td" style="background:#3178c6"></span>Навыки<span class="x">×</span></div>
+      <div class="tb" data-p="build"><span class="td" style="background:#e44d26"></span>Проекты<span class="x">×</span></div>
+      <div class="tb" data-p="terminal"><span class="td" style="background:#28c840"></span>Терминал<span class="x">×</span></div>
+      <div class="tb" data-p="contact"><span class="td" style="background:#007acc"></span>Контакты<span class="x">×</span></div>
     </div>
-    <div class="bc"><span>~/dev-card</span><span class="sep">›</span><span>src</span><span class="sep">›</span><span id="bcf">about.json</span></div>
+    <div class="bc"><span>~/portfolio</span><span class="sep">›</span><span>разделы</span><span class="sep">›</span><span id="bcf">Обо мне</span></div>
 
     <div class="co" id="CO">
       <div class="scroll-progress" id="SP"></div>
@@ -365,35 +365,34 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
     ╚═════╝ ╚══════╝  ╚═══╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝</pre>
         <div class="cb"><div class="ln" id="aln"></div><div class="cc typed anim" id="acode">
           <div><span class="punct">{</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"name"</span><span class="punct">:</span> <span class="str"><span class="scramble" data-text="Relax">Relax</span></span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"role"</span><span class="punct">:</span> <span class="str">"Full-Stack Developer"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"level"</span><span class="punct">:</span> <span class="str">"Senior"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"experience"</span><span class="punct">:</span> <span class="str">"<span class="hi">7</span> лет коммерческой разработки"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"location"</span><span class="punct">:</span> <span class="str">"Москва, Россия 🇷🇺"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"motto"</span><span class="punct">:</span> <span class="str">"Код — это поэзия для машин"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"status"</span><span class="punct">:</span> <span class="str hi">"open_to_work"</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"coffee"</span><span class="punct">:</span> <span class="num">Infinity</span><span class="punct">,</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">"bugs_fixed"</span><span class="punct">:</span> <span class="num" id="bugs">0</span> <span class="cm">// и создано столько же</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"имя"</span><span class="punct">:</span> <span class="str"><span class="scramble" data-text="Relax">Relax</span></span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"специализация"</span><span class="punct">:</span> <span class="str">"Разработка сайтов, ботов, сервисов"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"уровень"</span><span class="punct">:</span> <span class="str">"Senior"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"опыт"</span><span class="punct">:</span> <span class="str">"<span class="hi">7</span> лет коммерческой разработки"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"город"</span><span class="punct">:</span> <span class="str">"Москва, Россия 🇷🇺"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"девиз"</span><span class="punct">:</span> <span class="str">"Делаю сложное — простым"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"статус"</span><span class="punct">:</span> <span class="str hi">"открыт к заказам"</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"кофе"</span><span class="punct">:</span> <span class="num">Infinity</span><span class="punct">,</span></div>
+          <div>&nbsp;&nbsp;<span class="prop">"проектов_сделано"</span><span class="punct">:</span> <span class="num" id="bugs">0</span> <span class="cm">// и это не предел</span></div>
           <div><span class="punct">}</span></div>
         </div></div>
-        <div class="ctb"><div class="ctb-h"><span>📊 <span id="ct">0</span> contributions — last 24 weeks</span><div class="ctb-leg">Less<i style="background:var(--c-sf2)"></i><i class="cx l1" style="width:10px;height:10px"></i><i class="cx l2" style="width:10px;height:10px"></i><i class="cx l3" style="width:10px;height:10px"></i><i class="cx l4" style="width:10px;height:10px"></i>More</div></div><div class="cg" id="CG"></div></div>
       </div>
 
       <div class="pn" id="p-skills">
         <div class="cb" style="margin-bottom:var(--s3)"><div class="ln">1<br>2<br>3<br>4</div><div class="cc">
-          <div><span class="cm">// tech_stack.ts</span></div>
-          <div><span class="kw">export</span> <span class="kw">interface</span> <span class="type">TechStack</span> <span class="punct">{</span></div>
-          <div>&nbsp;&nbsp;<span class="prop">mastery</span><span class="punct">:</span> <span class="type">Record</span><span class="punct">&lt;</span><span class="type">string</span><span class="punct">,</span> <span class="type">number</span><span class="punct">&gt;</span></div>
-          <div><span class="punct">}</span></div>
+          <div><span class="cm">// Мои технологии и навыки</span></div>
+          <div><span class="cm">// Уровень владения в процентах</span></div>
+          <div><span class="cm">// Постоянно изучаю новое</span></div>
+          <div><span class="cm">// ⬇</span></div>
         </div></div>
-        <div class="skt">▸ Languages & Frameworks</div>
+        <div class="skt">▸ Языки и фреймворки</div>
         <div class="sk"><span class="sk-n">JavaScript</span><div class="sk-bg"><div class="sk-f" data-w="95" style="background:linear-gradient(90deg,#f7df1e,#f0db4f);--sd:0s"></div></div><span class="sk-p">95%</span></div>
         <div class="sk"><span class="sk-n">TypeScript</span><div class="sk-bg"><div class="sk-f" data-w="92" style="background:linear-gradient(90deg,#3178c6,#5a9fd4);--sd:.3s"></div></div><span class="sk-p">92%</span></div>
         <div class="sk"><span class="sk-n">Python</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#306998,#ffd43b);--sd:.6s"></div></div><span class="sk-p">88%</span></div>
         <div class="sk"><span class="sk-n">React / Next.js</span><div class="sk-bg"><div class="sk-f" data-w="93" style="background:linear-gradient(90deg,#61dafb,#0070f3);--sd:.9s"></div></div><span class="sk-p">93%</span></div>
         <div class="sk"><span class="sk-n">Node.js</span><div class="sk-bg"><div class="sk-f" data-w="90" style="background:linear-gradient(90deg,#339933,#66cc33);--sd:1.2s"></div></div><span class="sk-p">90%</span></div>
         <div class="sk"><span class="sk-n">Swift</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#f05138,#ff6f43);--sd:1.35s"></div></div><span class="sk-p">82%</span></div>
-        <div class="skt" style="margin-top:var(--s5)">▸ Infrastructure</div>
+        <div class="skt" style="margin-top:var(--s5)">▸ Инфраструктура</div>
         <div class="sk"><span class="sk-n">PostgreSQL</span><div class="sk-bg"><div class="sk-f" data-w="85" style="background:linear-gradient(90deg,#336791,#5294c4);--sd:1.5s"></div></div><span class="sk-p">85%</span></div>
         <div class="sk"><span class="sk-n">Supabase</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#3ecf8e,#2ab573);--sd:1.65s"></div></div><span class="sk-p">88%</span></div>
         <div class="sk"><span class="sk-n">MongoDB</span><div class="sk-bg"><div class="sk-f" data-w="80" style="background:linear-gradient(90deg,#47a248,#6cac48);--sd:1.8s"></div></div><span class="sk-p">80%</span></div>
@@ -412,13 +411,13 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
         <div class="skt" style="margin-top:var(--s5)">▸ Mobile</div>
         <div class="sk"><span class="sk-n">React Native</span><div class="sk-bg"><div class="sk-f" data-w="80" style="background:linear-gradient(90deg,#61dafb,#2196f3);--sd:3.1s"></div></div><span class="sk-p">80%</span></div>
         <div class="sk"><span class="sk-n">Flutter</span><div class="sk-bg"><div class="sk-f" data-w="60" style="background:linear-gradient(90deg,#02569b,#42a5f5);--sd:3.2s"></div></div><span class="sk-p">60%</span></div>
-        <div class="skt" style="margin-top:var(--s5)">▸ Bots & Integrations</div>
+        <div class="skt" style="margin-top:var(--s5)">▸ Боты и интеграции</div>
         <div class="sk"><span class="sk-n">Telegram API</span><div class="sk-bg"><div class="sk-f" data-w="95" style="background:linear-gradient(90deg,#0088cc,#34a8e0);--sd:2.7s"></div></div><span class="sk-p">95%</span></div>
         <div class="sk"><span class="sk-n">Telegram WebApp</span><div class="sk-bg"><div class="sk-f" data-w="90" style="background:linear-gradient(90deg,#0088cc,#5bc8ef);--sd:3s"></div></div><span class="sk-p">90%</span></div>
         <div class="sk"><span class="sk-n">Discord API</span><div class="sk-bg"><div class="sk-f" data-w="78" style="background:linear-gradient(90deg,#5865f2,#7983f5);--sd:3.3s"></div></div><span class="sk-p">78%</span></div>
         <div class="sk"><span class="sk-n">Payments API</span><div class="sk-bg"><div class="sk-f" data-w="88" style="background:linear-gradient(90deg,#6772e5,#9b59b6);--sd:3.6s"></div></div><span class="sk-p">88%</span></div>
         <div class="sk"><span class="sk-n">VK/MAX API</span><div class="sk-bg"><div class="sk-f" data-w="82" style="background:linear-gradient(90deg,#0077ff,#4a90d9);--sd:3.9s"></div></div><span class="sk-p">82%</span></div>
-        <div class="skt" style="margin-top:var(--s5)">▸ Learning</div>
+        <div class="skt" style="margin-top:var(--s5)">▸ Изучаю</div>
         <div class="sk"><span class="sk-n">Rust</span><div class="sk-bg"><div class="sk-f" data-w="45" style="background:linear-gradient(90deg,#ce422b,#f74c00);--sd:2.7s"></div></div><span class="sk-p">45%</span></div>
         <div class="sk"><span class="sk-n">Go</span><div class="sk-bg"><div class="sk-f" data-w="70" style="background:linear-gradient(90deg,#00add8,#5dc9e2);--sd:3s"></div></div><span class="sk-p">70%</span></div>
         <div class="sk"><span class="sk-n">Дедлайны</span><div class="sk-bg"><div class="sk-f" data-w="100" style="background:linear-gradient(90deg,#ef4444,#dc2626);--sd:3.3s"></div></div><span class="sk-p">💀</span></div>
@@ -541,8 +540,8 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
 
       <div class="pn" id="p-contact">
         <div class="cb"><div class="ln">1<br>2<br>3</div><div class="cc">
-          <div><span class="cm">#!/bin/bash</span></div>
-          <div><span class="cm"># Давай создадим что-то великое вместе</span></div>
+          <div><span class="cm">// Контакты</span></div>
+          <div><span class="cm"># Готов обсудить ваш проект — напишите мне</span></div>
           <div><span class="kw">echo</span> <span class="str">"Выбери способ ⬇"</span></div>
         </div></div>
         <div class="cgd">
@@ -557,18 +556,18 @@ a.cap-card{text-decoration:none;color:inherit;display:block}
 </div>
 
 <div class="sbar">
-  <div class="l"><div class="si">🔥 main</div><div class="si">✓ 0 problems</div><div class="si" id="ccn">⚡ 2,847 commits</div></div>
-  <div class="r"><div class="si" id="clk">00:00</div><div class="si">UTF-8</div><div class="si">Spaces: 2</div><div class="si" id="cvb" style="cursor:pointer">📄 CV</div><div class="si"><span class="pd"></span>&nbsp;Online</div></div>
+  <div class="l"><div class="si">🔥 main</div><div class="si">✓ 0 ошибок</div><div class="si" id="ccn">⚡ 2,847 действий</div></div>
+  <div class="r"><div class="si" id="clk">00:00</div><div class="si">UTF-8</div><div class="si">Spaces: 2</div><div class="si" id="cvb" style="cursor:pointer">📄 CV</div><div class="si"><span class="pd"></span>&nbsp;В сети</div></div>
 </div>
 </div>
 </div>
 
 <nav class="mob-nav" id="MN">
-  <div class="mnav on" data-m="about"><span class="mnav-i">👤</span>About</div>
-  <div class="mnav" data-m="skills"><span class="mnav-i">⚡</span>Skills</div>
-  <div class="mnav" data-m="build"><span class="mnav-i">🛠️</span>Build</div>
-  <div class="mnav" data-m="terminal"><span class="mnav-i">▶️</span>Term</div>
-  <div class="mnav" data-m="contact"><span class="mnav-i">📡</span>Contact</div>
+  <div class="mnav on" data-m="about"><span class="mnav-i">👤</span>Обо мне</div>
+  <div class="mnav" data-m="skills"><span class="mnav-i">⚡</span>Навыки</div>
+  <div class="mnav" data-m="build"><span class="mnav-i">🛠️</span>Проекты</div>
+  <div class="mnav" data-m="terminal"><span class="mnav-i">▶️</span>Терминал</div>
+  <div class="mnav" data-m="contact"><span class="mnav-i">📡</span>Связь</div>
 </nav>
 
 <script>
@@ -604,7 +603,7 @@ if(!isMob()){
 
 $('#CO').addEventListener('scroll',function(){const el=this,pct=el.scrollTop/(el.scrollHeight-el.clientHeight)*100;$('#SP').style.width=Math.min(100,pct||0)+'%'},{passive:true});
 
-const bcMap={about:'about.json',skills:'skills.ts',build:'build.md',terminal:'~/zsh',contact:'contact.sh'};
+const bcMap={about:'Обо мне',skills:'Навыки',build:'Проекты',terminal:'Терминал',contact:'Контакты'};
 function go(name){
   if(state.tab===name)return;state.tab=name;
   $$('.tb').forEach(t=>t.classList.toggle('on',t.dataset.p===name));
@@ -661,7 +660,7 @@ function toggleTP(){$('#TP').classList.toggle('on')}
 $('#TP').addEventListener('click',e=>{const o=e.target.closest('.tp-opt');if(o){e.stopPropagation();applyTheme(o.dataset.t)}});
 document.addEventListener('click',e=>{if(!e.target.closest('.ab[data-a="theme"]'))$('#TP').classList.remove('on')});
 
-const palCmds=[{i:'👤',l:'О себе',a:()=>go('about')},{i:'⚡',l:'Навыки',a:()=>go('skills')},{i:'🛠️',l:'Что я создаю',a:()=>go('build')},{i:'▶️',l:'Терминал',a:()=>go('terminal')},{i:'📡',l:'Контакты',a:()=>go('contact')},{i:'📂',l:'Проводник',a:()=>toggleExp()},{i:'🎨',l:'Default',a:()=>applyTheme('')},{i:'🎨',l:'Monokai',a:()=>applyTheme('monokai')},{i:'🎨',l:'Dracula',a:()=>applyTheme('dracula')},{i:'🎨',l:'Nord',a:()=>applyTheme('nord')},{i:'🎨',l:'GitHub',a:()=>applyTheme('github')},{i:'🎨',l:'Synthwave',a:()=>applyTheme('synth')},{i:'📄',l:'Скачать CV',a:()=>dlCV()},{i:'✈️',l:'Telegram',a:()=>open('https://t.me/relaxvhq')},{i:'🌐',l:'Сайт',a:()=>open('https://relaxdev.my')},{i:'🚀',l:'Портфолио',a:()=>go('build')},{i:'🔴',l:'Glitch!',a:()=>glitch()}];
+const palCmds=[{i:'👤',l:'О себе',a:()=>go('about')},{i:'⚡',l:'Навыки',a:()=>go('skills')},{i:'🛠️',l:'Проекты',a:()=>go('build')},{i:'▶️',l:'Терминал',a:()=>go('terminal')},{i:'📡',l:'Контакты',a:()=>go('contact')},{i:'📂',l:'Проводник',a:()=>toggleExp()},{i:'🎨',l:'Default',a:()=>applyTheme('')},{i:'🎨',l:'Monokai',a:()=>applyTheme('monokai')},{i:'🎨',l:'Dracula',a:()=>applyTheme('dracula')},{i:'🎨',l:'Nord',a:()=>applyTheme('nord')},{i:'🎨',l:'GitHub',a:()=>applyTheme('github')},{i:'🎨',l:'Synthwave',a:()=>applyTheme('synth')},{i:'📄',l:'Скачать CV',a:()=>dlCV()},{i:'✈️',l:'Telegram',a:()=>open('https://t.me/relaxvhq')},{i:'🌐',l:'Сайт',a:()=>open('https://relaxdev.my')},{i:'🚀',l:'Портфолио',a:()=>go('build')},{i:'🔴',l:'Glitch!',a:()=>glitch()}];
 let filteredPal=palCmds;
 function openCmd(){$('#CMD').classList.add('on');const i=$('#cmi');i.value='';i.focus();renderCmd('')}
 function closeCmd(){$('#CMD').classList.remove('on')}
@@ -673,11 +672,11 @@ $('#stb').addEventListener('click',openCmd);
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();$('#CMD').classList.contains('on')?closeCmd():openCmd()}if(e.key==='Escape')closeCmd()});
 
 function toast(m){const t=document.createElement('div');t.className='tst';t.innerHTML=m;$('#TT').appendChild(t);setTimeout(()=>t.remove(),3300)}
-function dlCV(){toast('📄 Загрузка CV...')}
+function dlCV(){toast('📄 Загрузка резюме...')}
 $('#cvb')?.addEventListener('click',dlCV);
 setInterval(()=>{$('#clk').textContent=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit',second:'2-digit'})},1000);
 const t0=Date.now();setInterval(()=>{const s=~~((Date.now()-t0)/1000),m=~~(s/60),h=~~(m/60);let r='';if(h)r+=h+'ч ';if(m)r+=(m%60)+'м ';r+=(s%60)+'с';const el=$('#up');if(el)el.textContent=r},1000);
-let cn=2847;setInterval(()=>{if(Math.random()>.6){cn++;const el=$('#ccn');if(el){el.textContent=`⚡ ${cn.toLocaleString()} commits`;el.style.color='var(--c-grn)';setTimeout(()=>el.style.color='',500)}}},4500);
+let cn=2847;setInterval(()=>{if(Math.random()>.6){cn++;const el=$('#ccn');if(el){el.textContent=`⚡ ${cn.toLocaleString()} действий`;el.style.color='var(--c-grn)';setTimeout(()=>el.style.color='',500)}}},4500);
 </script>
 </body>
 </html>
